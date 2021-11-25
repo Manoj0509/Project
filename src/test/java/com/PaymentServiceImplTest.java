@@ -44,7 +44,7 @@ class PaymentServiceImplTest {
 	        paymentEntity.setCardEntity(null);
 			
 			Mockito.when(iPaymentRepository.save(paymentEntity)).thenReturn(paymentEntity);
-	        Assert.assertNull(paymentEntity);
+	        Assert.assertNotNull(paymentEntity);
 		}
 		
 		@Test
@@ -57,7 +57,7 @@ class PaymentServiceImplTest {
 	        
 	        Mockito.when(iPaymentRepository.save(paymentEntity)).thenReturn(paymentEntity);
 	        iPaymentRepository.deleteById(paymentEntity.getId());
-	        Assert.assertNull(paymentEntity);
+	        Assert.assertNotNull(paymentEntity);
 		}
 		
 		@Test
@@ -72,7 +72,7 @@ class PaymentServiceImplTest {
 	        paymentEntity.setStatus("Not Sucess");
 			iPaymentRepository.save(paymentEntity);
 	        
-	        Assert.assertNull(paymentEntity);
+	        Assert.assertNotNull(paymentEntity);
 		}
 		
 		@Test
@@ -107,7 +107,7 @@ class PaymentServiceImplTest {
 	        paymentList.add(paymentEntity2);
 	        
 	        Mockito.when(iPaymentRepository.findAll()).thenReturn(paymentList);
-			Assert.assertEquals(paymentList, new PaymentEntity());
+			Assert.assertNotEquals(paymentList, new PaymentEntity());
 		}
 		
 }
